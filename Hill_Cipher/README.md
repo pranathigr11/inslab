@@ -27,13 +27,13 @@ pip install numpy
 ### **2. Clone the Repository**
 Clone this repository to your local machine using the following command:
 ```bash
-git clone https://github.com/MeethaPAnchan123/INS_LAB.git
+git clone https://github.com/pranathigr11/inslab.git
 ```
 
 ### **3. Navigate to the Project Folder**
 After cloning, navigate to the folder where the project is located:
 ```bash
-cd INS_LAB
+cd inslab
 ```
 
 ### **4. Run the Code**
