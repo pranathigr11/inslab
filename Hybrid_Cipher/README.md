@@ -36,13 +36,13 @@ git clone https://github.com/pranathigr11/inslab.git
 
 ### **3. Navigate to the Project Folder**
 ```bash
-cd inslab
+cd Hybrid_Cipher
 ```
 
 ### **4. Run the Script**
 To encrypt and decrypt a message, run:
 ```bash
-python hybrid_cipher.py
+python hbrid_cipher.py
 ```
 
 ---
