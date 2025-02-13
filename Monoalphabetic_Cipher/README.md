@@ -29,7 +29,7 @@ git clone https://github.com/pranathigr11/inslab.git
 ### **3. Navigate to the Project Folder**
 After cloning, go to the folder where the project is located:
 ```bash
-cd inslab
+cd Monoalphabetic_Cipher
 ```
 
 ### **4. Run the Code**
