@@ -19,13 +19,13 @@ Ensure you have **Python 3.x** installed on your system. Download it from the of
 ### **2. Clone the Repository**  
 Clone this repository to your local machine using the following command:  
 ```bash
-git clone https://github.com/YourUsername/VigenereCipher.git
+git clone https://github.com/pranathigr11/inslab.git
 ```
 
 ### **3. Navigate to the Project Folder**  
 After cloning, navigate to the folder where the project is located:  
 ```bash
-cd VigenereCipher
+cd inslab
 ```
 
 ### **4. Run the Code**  
