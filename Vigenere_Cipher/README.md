@@ -25,7 +25,7 @@ git clone https://github.com/pranathigr11/inslab.git
 ### **3. Navigate to the Project Folder**  
 After cloning, navigate to the folder where the project is located:  
 ```bash
-cd inslab
+cd Vigenere_Cipher
 ```
 
 ### **4. Run the Code**  
