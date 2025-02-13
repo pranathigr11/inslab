@@ -36,7 +36,7 @@ git clone https://github.com/pranathigr11/inslab.git
 
 ### **3. Navigate to the Project Folder**
 ```bash
-cd hybrid-cipher
+cd inslab
 ```
 
 ### **4. Run the Script**
