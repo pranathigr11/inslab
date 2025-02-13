@@ -31,7 +31,7 @@ Ensure you have **Python 3.x** installed on your system. You can download it fro
 ### **2. Clone the Repository**
 Clone this repository to your local machine using:
 ```bash
-git clone https://github.com/yourusername/hybrid-cipher.git
+git clone https://github.com/pranathigr11/inslab.git
 ```
 
 ### **3. Navigate to the Project Folder**
