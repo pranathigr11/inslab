@@ -103,5 +103,9 @@ Encrypted: TFJJZX
 ## **Additional Information**
 The **Hill Cipher** is a strong encryption method but requires a **valid key matrix** (one that has an inverse in **mod 26**) to be decrypted successfully. You can extend this script to include decryption by computing the modular inverse of the key matrix.
 
+
+## **Run Code** 
+https://onlinegdb.com/4aqhlIAx0
 ---
+
 
