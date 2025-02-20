@@ -84,7 +84,7 @@ Encrypted: GYFFWZ
 ## **Additional Information**
 The Playfair cipher can be extended to include a decryption function, or you could modify the script to handle input validation or add additional functionality, such as allowing the user to input a key and plaintext dynamically.
 
-##**RUNCODE**
+## **RUNCODE**
 https://onlinegdb.com/biMA05hie
 ---
 
