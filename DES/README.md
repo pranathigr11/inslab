@@ -129,24 +129,24 @@ Key 8 =  01101100101000
 ---
 
 ## **Potential Use Cases**
-✅ Learning DES key generation logic.  
-✅ Demonstrating bit manipulation and binary operations.  
-✅ Generating randomized keys for testing and educational purposes.  
+ Learning DES key generation logic.  
+ Demonstrating bit manipulation and binary operations.  
+Generating randomized keys for testing and educational purposes.  
 
 ---
 
 ## **Limitations**
-⚠️ This implementation is simplified and lacks the full DES key-scheduling logic.  
-⚠️ The generated keys are **not actual DES keys** — they are inspired by DES logic.  
-⚠️ For real encryption, full DES key generation rules must be implemented.  
+ This implementation is simplified and lacks the full DES key-scheduling logic.  
+ The generated keys are **not actual DES keys** — they are inspired by DES logic.  
+ For real encryption, full DES key generation rules must be implemented.  
 
 ---
 
 ## **Future Enhancements**
-✅ Implement full DES key permutation and compression logic.  
-✅ Introduce parity bit calculation for improved authenticity.  
-✅ Add support for variable-length strings with padding techniques.  
-✅ Integrate full DES encryption and decryption functionality.  
+ Implement full DES key permutation and compression logic.  
+ Introduce parity bit calculation for improved authenticity.  
+ Add support for variable-length strings with padding techniques.  
+ Integrate full DES encryption and decryption functionality.  
 
 ---
 
@@ -168,5 +168,6 @@ Ensure you have **Python 3.x** installed.
    ```
    python des.py
    ```
+## **run code** 
 
 ---
