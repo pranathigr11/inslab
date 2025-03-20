@@ -1,16 +1,23 @@
-# **Simple Encryption and Decryption Using Binary Manipulation**
+# **Feistel Cipher Implementation in Python**
 
-This project implements a **simple encryption and decryption algorithm** using **binary manipulation** techniques. The code demonstrates concepts such as string-to-binary conversion, XOR operations, and basic key-based encryption.
+This project implements a **Feistel Cipher**, a symmetric encryption technique that forms the backbone of various secure cryptographic systems, such as **DES (Data Encryption Standard)**. The code follows the core principles of a Feistel Cipher, including data splitting, XOR operations, key mixing, and swapping halves.
 
 ---
 
 ## **How It Works**
-The encryption process involves bitwise operations, swapping values, and key-based manipulation to encode and decode a given text.
+The Feistel Cipher is a symmetric structure used in block cipher design. This implementation follows the essential steps:
+
+1. **Input String Conversion to Binary**  
+2. **Splitting the Binary Data**  
+3. **Key Mixing (Encryption Process)**  
+4. **Swapping Left and Right Halves**  
+5. **Decryption Process** (reversing the steps)  
 
 ---
 
 ## **Step 1: Input Values**
-The program asks for two inputs:
+The program asks for:
+
 - **`s`** — The **input string** to be encrypted.  
 - **`k`** — The **key** used for encryption and decryption.  
 
@@ -23,18 +30,29 @@ Enter a key: key
 ---
 
 ## **Step 2: Binary Conversion**
-- The input string is converted into its **binary representation**, with each character represented by **8 bits**.
+The input string and key are converted into their **binary representation** (8-bit format for each character).
 
+**String to Binary Conversion:**
 ```python
 result = "".join(format(ord(i), '08b') for i in s)
 ```
 
-> Example Output for `"Hello"`:  
-```
-result: 0100100001100101011011000110110001101111
+**Key to Binary Conversion:**
+```python
+key = "".join(format(ord(i), '08b') for i in k)
 ```
 
-- The binary string is split into two halves:  
+> Example Output for `"Hello"` and `"key"`:  
+```
+Result: 0100100001100101011011000110110001101111
+Key: 011010110110010101111001
+```
+
+---
+
+## **Step 3: Splitting the Binary Data**
+The binary string is split into two equal halves:
+
 ```python
 l = int(len(result) / 2)
 left = result[:l]
@@ -49,49 +67,38 @@ Right: 010110110001101100110111
 
 ---
 
-## **Step 3: Key Conversion**
-The provided key is also converted to **binary**:
-
-```python
-key = "".join(format(ord(i), '08b') for i in k)
-```
-
-> Example Key (`"key"`):  
-```
-Key: 011010110110010101111001
-```
-
----
-
 ## **Step 4: Encryption Process**
-The algorithm performs the following steps to encrypt the text:
+The Feistel Cipher encryption process includes:
 
-1. **Right Half + Key Addition (Binary Sum):**  
+✅ **Right Half + Key Addition (Binary Sum)**  
 ```python
 s = bin(int(right, 2) + int(key, 2))
 ```
 
-2. **XOR Operation with Left Half:**  
+✅ **XOR Operation with Left Half**  
 ```python
 answer = bin(int(s[2:], 2) ^ int(left, 2))
 ```
 
-3. **Swapping:**  
-The right and left halves are swapped for added complexity:  
+✅ **Swapping Halves**  
 ```python
 newr, newl = newl, newr
 ```
 
-4. **Another Binary Sum and XOR Round:**  
+✅ **Second Key Mixing and XOR Round**  
 ```python
 s = bin(int(newr, 2) + int(key, 2))
 ans = bin(int(s[2:], 2) ^ int(newl, 2))
 ```
 
-5. The halves are swapped once more to finalize the cipher text.
+✅ **Final Swap to Construct Cipher Text**  
+```python
+nl, nr = nr, nl
+cipher = nl + nr
+```
 
-6. **Cipher Padding:**  
-To ensure the output matches the original binary text length, zeros are padded if needed:  
+✅ **Cipher Padding**  
+To ensure the encrypted text matches the original binary text length:
 ```python
 while len(cipher) != len(result):
     cipher = "0" + cipher
@@ -100,7 +107,7 @@ while len(cipher) != len(result):
 ---
 
 ## **Step 5: Decryption Process**
-The encrypted text is then converted back to characters:
+The cipher text is converted back into its original string using 8-bit chunks.
 
 ```python
 plaintext = ""
@@ -113,15 +120,15 @@ for i in range(0, len(cipher), 8):
 ---
 
 ## **Step 6: Example Output**
-### **Input:**
+### **Input**
 ```
 Enter a string: Hello
 Enter a key: key
 ```
 
-### **Output:**
+### **Output**
 ```
-result: 0100100001100101011011000110110001101111
+Result: 0100100001100101011011000110110001101111
 Encrypted Text: 0110010010111011010000110111101101101101
 Decrypted Text: Hello
 ```
@@ -130,38 +137,38 @@ Decrypted Text: Hello
 
 ---
 
-## **Key Concepts**
-🔹 **Binary Conversion** — Converting text and keys to binary format.  
-🔹 **XOR Operation** — Used for obfuscating the binary text by flipping bits.  
-🔹 **Swapping Values** — Introduces additional complexity to enhance security.  
-🔹 **Key Addition** — Adds a layer of encryption using modular arithmetic.
+## **Key Concepts of Feistel Cipher**
+🔹 **Splitting the Data:** Dividing the input into two halves for iterative encryption.  
+🔹 **XOR Operations:** Key mixing using XOR ensures data is obscured effectively.  
+🔹 **Swapping Halves:** Ensures diffusion (spreading data influence) for security.  
+🔹 **Reversible Decryption Process:** The same steps are applied in reverse to decrypt the data.  
 
 ---
 
 ## **Potential Use Cases**
-✅ Lightweight encryption for non-critical data.  
-✅ Basic learning tool for understanding binary operations in encryption.  
-✅ Foundation for building more advanced encryption systems.
+✅ Secure data transmission.  
+✅ Encryption in file systems.  
+✅ Foundation for cryptographic algorithms like **DES** and **Blowfish**.  
 
 ---
 
 ## **Limitations**
-⚠️ This algorithm lacks cryptographic strength for real-world security applications.  
-⚠️ Key length limitations could make the cipher vulnerable to brute force attacks.  
-⚠️ This is primarily for educational purposes rather than robust encryption.
+⚠️ **Lack of Multiple Rounds:** Standard Feistel ciphers use multiple rounds (e.g., 16 in DES) to increase security.  
+⚠️ **Simple Key Mixing:** For stronger security, a proper round function (`F` function) should be introduced.  
+⚠️ **Vulnerable to Known Attacks:** Without additional complexity, this implementation may be less secure for real-world use.  
 
 ---
 
 ## **Improvements & Enhancements**
-✅ Add dynamic key expansion for better security.  
-✅ Implement multiple encryption rounds for improved complexity.  
-✅ Introduce error handling for invalid characters or keys.  
-✅ Enhance the algorithm with stronger XOR patterns or logic.
+✅ Add multiple encryption rounds for stronger security.  
+✅ Introduce a more complex **round function (F)** for better confusion and diffusion.  
+✅ Implement dynamic key expansion to generate unique round keys.  
+✅ Add error handling for non-printable characters or invalid key sizes.  
 
 ---
 
 ## **Prerequisites**
-Ensure you have **Python 3.x** installed.
+Ensure you have **Python 3.x** and **NumPy** installed.
 
 ---
 
@@ -176,8 +183,7 @@ Ensure you have **Python 3.x** installed.
    ```
 3. **Run the Python file:**
    ```
-   python binary_encryption.py
+   python feistel_cipher.py
    ```
 
 ---
-
