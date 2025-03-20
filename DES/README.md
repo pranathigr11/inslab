@@ -1,27 +1,34 @@
-# **Bit Manipulation Key Generator**
+# **DES Key Generator Using Bit Manipulation**
 
-This project implements a **Key Generator** that takes a string as input and produces 8 unique keys using bit manipulation techniques. Each key is derived by manipulating the binary representation of the input string. This project is intended for learning purposes and demonstrates concepts such as binary operations, shifting, and randomization.
+This project implements a **Key Generator for DES (Data Encryption Standard)** using bit manipulation techniques. The code takes a string as input and produces **8 unique keys** that can be used in DES encryption. This project is designed for learning purposes and demonstrates essential concepts such as **binary operations**, **bit shifting**, and **randomization**.
+
+---
+
+## **What is DES?**
+**DES (Data Encryption Standard)** is a symmetric-key block cipher that encrypts data in 64-bit blocks. DES uses **16 rounds** of Feistel structure encryption, with each round requiring a **unique 48-bit subkey**. This implementation focuses on generating randomized keys that mimic DES's key generation principles.
 
 ---
 
 ## **How It Works**
-The code performs the following steps to generate 8 unique keys:
+The code follows these steps to generate 8 unique keys:
+
+---
 
 ### **Step 1: User Input**
-- The program prompts the user to enter a string.
-- The input string is converted into its **binary representation** using this line:
+- The user is prompted to enter a string, which will be used to generate the keys.  
+- The input string is converted into its **binary representation** using:
 
 ```python
 result = ''.join(format(ord(i), '08b') for i in s)
 ```
 
-> Example Input: `"hello"`  
-> Binary Representation: `0110100001100101011011000110110001101111`
+> **Example Input:** `"hello"`  
+> **Binary Representation:** `0110100001100101011011000110110001101111`
 
 ---
 
 ### **Step 2: Removing Every 8th Bit**
-- The code removes every 8th bit from the binary string (simulating parity bit removal or similar encoding logic).  
+- DES removes parity bits during key generation. Similarly, this code eliminates every 8th bit from the binary string.
 
 ```python
 for i in range(len(result)):
@@ -29,12 +36,12 @@ for i in range(len(result)):
         answer += result[i]
 ```
 
-> Example Result After Removal: `110100001100101011011000110110001101111`
+> **Result After Removal:** `110100001100101011011000110110001101111`
 
 ---
 
 ### **Step 3: Splitting the Binary String**
-- The resulting binary string is split into **two halves**:
+- The modified binary string is split into **two halves** to simulate DES's left and right halves.
 
 ```python
 l = int(len(answer) / 2)
@@ -42,21 +49,21 @@ left = answer[:l]
 right = answer[l:]
 ```
 
-> Example Left Half: `11010000110010`  
-> Example Right Half: `101101100011011`
+> **Left Half:** `11010000110010`  
+> **Right Half:** `101101100011011`
 
 ---
 
 ### **Step 4: Bitwise Shifting and Key Generation**
-- The code defines an array `lt` that contains shift values for each key.
+- The code defines an array `lt` that holds shift values for each key.
 
 ```python
 lt = [2, 3, 6, 7, 1, 6, 5, 9]
 ```
 
 - In each loop iteration:
-  - Both the left and right halves are converted back into integers and shifted left by the corresponding value in `lt`.
-  - The shifted values are combined to form a new potential key.
+  - Both halves are shifted left by a specified number of bits.
+  - The two halves are combined to form a new key.
 
 ```python
 nl = int(left, 2)
@@ -69,7 +76,7 @@ newKey = nr[num:] + nl[num:]
 ---
 
 ### **Step 5: Random Removal of Bits**
-- Eight random indices are chosen to exclude bits from the generated binary string to introduce randomness.
+- To enhance randomness, the code randomly excludes 8 bits from each generated key.
 
 ```python
 while (len(rm) != 8):
@@ -114,48 +121,52 @@ Key 8 =  01101100101000
 ---
 
 ## **Key Components and Concepts**
-- **Binary Conversion:** Converting characters to 8-bit binary form.
-- **Bitwise Shifting:** Using `<<` (left shift) to manipulate binary data.
-- **Randomization:** Randomly excluding bits to enhance randomness.
-- **String Manipulation:** Efficiently handling binary strings for key creation.
+- **Binary Conversion:** Converts characters into 8-bit binary values.  
+- **Bitwise Shifting:** Uses `<<` (left shift) to manipulate binary data.  
+- **Randomization:** Randomly excludes bits to introduce randomness.  
+- **String Manipulation:** Efficiently processes binary strings to create keys.  
 
 ---
 
 ## **Potential Use Cases**
-While this code is a learning project, here are some potential applications:
-✅ Creating simple keys for encryption-like algorithms.  
-✅ Generating randomized data for testing.  
-✅ Understanding bitwise operations and binary data manipulation.  
+✅ Learning DES key generation logic.  
+✅ Demonstrating bit manipulation and binary operations.  
+✅ Generating randomized keys for testing and educational purposes.  
 
 ---
 
-## **Improvements & Future Enhancements**
-To enhance this project, you could:
-- Add error handling for invalid inputs.
-- Implement a stronger randomization method.
-- Allow dynamic selection of shift values instead of fixed `lt` values.
-- Introduce encryption concepts like XOR operations for added complexity.
+## **Limitations**
+⚠️ This implementation is simplified and lacks the full DES key-scheduling logic.  
+⚠️ The generated keys are **not actual DES keys** — they are inspired by DES logic.  
+⚠️ For real encryption, full DES key generation rules must be implemented.  
+
+---
+
+## **Future Enhancements**
+✅ Implement full DES key permutation and compression logic.  
+✅ Introduce parity bit calculation for improved authenticity.  
+✅ Add support for variable-length strings with padding techniques.  
+✅ Integrate full DES encryption and decryption functionality.  
 
 ---
 
 ## **Prerequisites**
-Ensure you have Python installed (version 3.x recommended).
+Ensure you have **Python 3.x** installed.
 
 ---
 
 ## **How to Run**
-1. Clone this repository:
+1. **Clone this repository:**
    ```
    git clone <repository_link>
    ```
-2. Navigate to the project directory:
+2. **Navigate to the project directory:**
    ```
    cd <project_directory>
    ```
-3. Run the Python file:
+3. **Run the Python file:**
    ```
-   python key_generator.py
+   python des.py
    ```
 
 ---
-
